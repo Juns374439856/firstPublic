@@ -1,0 +1,65 @@
+1.手写JDBC连接数据库的代码
+
+ String drive = " 驱动类 的全路径 "；
+ Class.forName(drive); 加载驱动
+ 
+ 2.创建一个链接对象
+ Connection connection = DriveManager.getConnection(数据库连接地址，数据库用户名，数据库密码)；
+ 
+ 3.通过  创建的连接对象  创建一个执行SQL语句的对象
+ Statement statement = connection.createStatement();
+ 
+ 4.写要执行的SQL 语句
+ String sql =" 增删改SQL语句 ";
+ 
+ 
+ 5.通过执行SQL  语句的对象 执行sql 并放回受影响的行数
+ int result = statement.executeUpdate(sql);
+ 
+ 6.释放资源
+ statement.close();
+ 
+ connection.close();
+ 
+ 
+ 
+ 
+ String drive = " 驱动类 的 全路径"；
+ 
+ Class.forName(drive); 加载驱动
+ 
+ 
+ Connection connection = DriveManager.getConnection(数据库连接地址，数据库用户名，数据库密码)；
+ 
+ 
+ Statement statement = connection.createStatement();
+ 
+ String sql = " 查询的 SQL 语句"
+ 
+ 
+ ResultSet  rs = statement.executeQuery(sql);
+ 
+ List<Object> resultList = new ArrayList<Object>();
+ 
+ if(null ！=rs){
+ 
+	while(re.next()){
+	
+	Object obj = new Object();
+	
+	obj.set属性名(rs.getString("属性名"))；
+	或者
+	obj.set属性名(rs.getInt("属性名"))；
+	
+	resultList.add(obj);
+	
+	}
+ 
+ }
+  
+  
+  
+  rs.close();
+  statement.close();
+  connection.close();
+	
